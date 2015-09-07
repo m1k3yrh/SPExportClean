@@ -7,6 +7,7 @@ Created on 7 Jun 2015
 import csv     
 import sys  
 import os
+import re
 
 
 
@@ -39,12 +40,16 @@ try:
 except IOError:
     print ('Error. Cannot open', out_file_name)
     sys.exit(0)
+
+# Create Reg Exp
+regexp=re.compile(';#[0-9]+')
+regexp2=re.compile(';#')
     
 for r in raw_data:
     print(r)
     
     for i in r:
-        out_file.write(i+'\t')
+        out_file.write(regexp2.sub(';',regexp.sub('',i))+'\t')
     
     out_file.write('\n') # End of record
     
