@@ -42,8 +42,8 @@ except IOError:
     sys.exit(0)
 
 # Create Reg Exp
-regexp=re.compile(';#[0-9]+')
-regexp2=re.compile(';#')
+regexp=re.compile('#[0-9;#]+')
+regexp2=re.compile(';+')
     
 for r in raw_data: # for each row
     print(r)
